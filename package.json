@@ -1,0 +1,20 @@
+{
+	"name": "onscribe-cli",
+	"description": "A node module to perform cli requests to onscribe",
+	"version": "0.0.1",
+	"author": "kdi",
+	"contributors": [
+		{ "name": "Makis Tracend", "email": "makis@kdi.co" }
+	],
+	"homepage": "http://onscri.be", 
+	"keywords": ["onscribe", "aggregate", "cli", "json"],
+	"repository": {
+	"type": "git",
+		"url": "git://github.com/onscribe/cli.git"
+	},
+	"engines": { "node": "0.8.x" }, 
+	"main": "index",
+	"bin": { },
+	"dependencies": {
+	}
+}
