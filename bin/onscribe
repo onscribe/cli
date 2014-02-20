@@ -1,0 +1,56 @@
+#!/usr/local/bin/node
+
+/**
+ * Module dependencies.
+ */
+
+var program = require('commander')
+	main = require("../lib/main");
+
+var exec;
+
+program
+	.version('0.4.0')
+	.option('-c, --config <path>', 'Set config path. Defaults to /root/.sdb')
+	.option('-k, --key <serial>', 'Set credentials key.')
+	.option('-s, --secret <serial>', 'Set credentials secret.')
+
+/* User */
+program
+	.command('user [id]')
+	.description('Read user info')
+	.option("-l, --list", "List all users")
+	.action(function(id, options){
+		id = id || false;
+		process.nextTick(function(){
+			exec.user( id, options )
+		});
+	})
+
+/* Subscriptions */
+program
+	.command('sub [user]')
+	.description('Read subscriptions, optionally from user')
+	.option("-a, --all", "Read all items")
+	.option("-i, --item <number>", "Output a single item by its id")
+	.option("-f, --fields <list>", "Return only certain fields")
+	.option("-l, --limit <number>", "Limit number of items returned")
+	.option("-q, --query <string>", "Output items based on conditions")
+	.option("-o, --order <field>", "Define the order of output based on a field")
+	.action(function(user, options){
+		user = user || '*';
+		process.nextTick(function(){
+			exec.sub( user, options )
+		});
+	})
+	.on('--help', function() {
+		console.log('  Examples:');
+		console.log();
+		console.log('    $ sub -i {{id}}');
+		console.log('    $ sub {{user}} --all');
+		console.log();
+});
+
+program.parse(process.argv);
+
+exec = main( program );
