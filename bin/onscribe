@@ -10,7 +10,7 @@ var program = require('commander')
 var exec;
 
 program
-	.version('0.1.0')
+	.version('0.2.0')
 	.option('-c, --config <path>', 'Set config path. Defaults to /root/.sdb')
 	.option('-k, --key <serial>', 'Set credentials key.')
 	.option('-s, --secret <serial>', 'Set credentials secret.')
