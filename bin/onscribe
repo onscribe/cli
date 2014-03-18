@@ -30,7 +30,7 @@ program
 program
 	.command('product [id]')
 	.description('Read product details')
-	.option("-l, --list", "List all products")
+	.option("-a, --all", "List all products for user")
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
@@ -40,8 +40,8 @@ program
 	.on('--help', function() {
 		console.log('  Examples:');
 		console.log();
-		console.log('    $ sub -i {{id}}');
-		console.log('    $ sub {{user}} --all');
+		console.log('    $ product {{id}}');
+		console.log('    $ product --all');
 		console.log();
 });
 
