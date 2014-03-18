@@ -10,7 +10,7 @@ var program = require('commander')
 var exec;
 
 program
-	.version('0.4.0')
+	.version('0.1.0')
 	.option('-c, --config <path>', 'Set config path. Defaults to /root/.sdb')
 	.option('-k, --key <serial>', 'Set credentials key.')
 	.option('-s, --secret <serial>', 'Set credentials secret.')
@@ -19,13 +19,31 @@ program
 program
 	.command('user [id]')
 	.description('Read user info')
-	.option("-l, --list", "List all users")
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
 			exec.user( id, options )
 		});
 	})
+
+/* Product */
+program
+	.command('product [id]')
+	.description('Read product details')
+	.option("-l, --list", "List all products")
+	.action(function(id, options){
+		id = id || false;
+		process.nextTick(function(){
+			exec.product( id, options )
+		});
+	})
+	.on('--help', function() {
+		console.log('  Examples:');
+		console.log();
+		console.log('    $ sub -i {{id}}');
+		console.log('    $ sub {{user}} --all');
+		console.log();
+});
 
 /* Subscriptions */
 program
