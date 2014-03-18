@@ -12,7 +12,7 @@
 	"type": "git",
 		"url": "git://github.com/onscribe/cli.git"
 	},
-	"engines": { "node": "0.8.x" },
+	"engines": { "node": ">=0.8.x" },
 	"main": "index",
 	"bin": { },
 	"dependencies": {
