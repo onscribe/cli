@@ -14,7 +14,9 @@
 	},
 	"engines": { "node": ">=0.8.x" },
 	"main": "index",
-	"bin": { },
+	"bin": {
+		"onscribe": "bin/onscribe"
+	},
 	"dependencies": {
 		"commander": "2.1.0",
 		"onscribe": "*"
