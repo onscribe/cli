@@ -52,7 +52,7 @@ program
 	.option("-a, --all", "Read all items")
 	.option("-i, --item <number>", "Output a single item by its id")
 	.option("-f, --fields <list>", "Return only certain fields")
-	.option("-l, --limit <number>", "Limit number of items returned")
+	.option("-n, --number <number>", "Limit number of items returned")
 	.option("-q, --query <string>", "Output items based on conditions")
 	.option("-o, --order <field>", "Define the order of output based on a field")
 	.action(function(user, options){
