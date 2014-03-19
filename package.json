@@ -19,6 +19,7 @@
 	},
 	"dependencies": {
 		"commander": "2.1.0",
-		"onscribe": "*"
+		"onscribe": "*",
+		"prompt": "0.2.12"
 	}
 }
