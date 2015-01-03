@@ -4,13 +4,17 @@
  * Module dependencies.
  */
 
-var program = require('commander')
-	main = require("../lib/main");
+var program = require('commander'),
+	main = require('../lib/main'),
+	path = require('path'),
+	fs = require('fs');
 
 var exec;
+// package info
+var package = JSON.parse( fs.readFileSync( path.resolve('../package.json'), 'utf-8') ); // condition the existance of package.json or component.json...
 
 program
-	.version('0.2.0')
+	.version( package.version )
 	.option('-c, --config <path>', 'Set config path. Defaults to ~/.onscribe')
 
 /* Setup */
@@ -19,7 +23,7 @@ program
 	.description('Setup credentials')
 	.action(function(options){
 		process.nextTick(function(){
-			exec.setup(options )
+			exec.setup(options );
 		});
 	})
 
@@ -30,7 +34,7 @@ program
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
-			exec.user( id, options )
+			exec.user( id, options );
 		});
 	})
 
@@ -39,23 +43,50 @@ program
 	.command('product [id]')
 	.description('Read product details')
 	.option("-a, --all", "List all products for user")
+	.option("-i, --item <number>", "Output a single item by its id")
+	.option("-k, --keys <list>", "Return only certain fields")
+	.option("-n, --number <number>", "Limit number of items returned")
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
-			exec.product( id, options )
+			exec.product( id, options );
 		});
 	})
 	.on('--help', function() {
 		console.log('  Examples:');
 		console.log();
-		console.log('    $ product {{id}}');
-		console.log('    $ product --all');
+		console.log('    $ onscribe product {{id}}');
+		console.log('    $ onscribe product --all');
+		console.log();
+});
+
+/* Provider */
+program
+	.command('provider [id]')
+	.description('Read provider info, optionally from product')
+	.option("-a, --all", "Read all subscribers")
+	.option("-i, --item <number>", "Output a single item by its id")
+	.option("-k, --keys <list>", "Return only certain fields")
+	.option("-n, --number <number>", "Limit number of items returned")
+	.option("-q, --query <string>", "Output items based on conditions")
+	.option("-o, --order <field>", "Define the order of output based on a field")
+	.action(function(id, options){
+		id = id || false;
+		process.nextTick(function(){
+			exec.provider( id, options );
+		});
+	})
+	.on('--help', function() {
+		console.log('  Examples:');
+		console.log();
+		console.log('    $ onscribe user -i {{id}}');
+		console.log('    $ onscribe user {{user}} --all');
 		console.log();
 });
 
 /* Subscriptions */
 program
-	.command('sub [id]')
+	.command('subscription [id]')
 	.description('Read subscriber info, optionally from product')
 	.option("-a, --all", "Read all subscribers")
 	.option("-i, --item <number>", "Output a single item by its id")
@@ -66,14 +97,14 @@ program
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
-			exec.sub( id, options )
+			exec.subscription( id, options );
 		});
 	})
 	.on('--help', function() {
 		console.log('  Examples:');
 		console.log();
-		console.log('    $ sub -i {{id}}');
-		console.log('    $ sub {{user}} --all');
+		console.log('    $ onscribe subscription -i {{id}}');
+		console.log('    $ onscribe subscription {{user}} --all');
 		console.log();
 });
 
