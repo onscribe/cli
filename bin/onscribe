@@ -11,21 +11,22 @@ var program = require('commander'),
 
 var exec;
 // package info
-var package = JSON.parse( fs.readFileSync( path.resolve('../package.json'), 'utf-8') ); // condition the existance of package.json or component.json...
+var package = JSON.parse( fs.readFileSync( path.resolve( __dirname, '../package.json'), 'utf-8') ); // condition the existance of package.json or component.json...
 
 program
 	.version( package.version )
-	.option('-c, --config <path>', 'Set config path. Defaults to ~/.onscribe')
+	.option('-c, --config <path>', 'Set config path. Defaults to ~/.onscribe');
 
 /* Setup */
 program
 	.command('setup')
+	.option('-a, --all', 'Update all config options, including key/secret & url')
 	.description('Setup credentials')
 	.action(function(options){
 		process.nextTick(function(){
 			exec.setup(options );
 		});
-	})
+	});
 
 /* User */
 program
@@ -36,7 +37,7 @@ program
 		process.nextTick(function(){
 			exec.user( id, options );
 		});
-	})
+	});
 
 /* Product */
 program
@@ -58,7 +59,7 @@ program
 		console.log('    $ onscribe product {{id}}');
 		console.log('    $ onscribe product --all');
 		console.log();
-});
+	});
 
 /* Provider */
 program
@@ -82,7 +83,7 @@ program
 		console.log('    $ onscribe user -i {{id}}');
 		console.log('    $ onscribe user {{user}} --all');
 		console.log();
-});
+	});
 
 /* Subscriptions */
 program
@@ -106,7 +107,7 @@ program
 		console.log('    $ onscribe subscription -i {{id}}');
 		console.log('    $ onscribe subscription {{user}} --all');
 		console.log();
-});
+	});
 
 program.parse(process.argv);
 
