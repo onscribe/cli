@@ -15,7 +15,8 @@ var package = JSON.parse( fs.readFileSync( path.resolve( __dirname, '../package.
 
 program
 	.version( package.version )
-	.option('-c, --config <path>', 'Set config path. Defaults to ~/.onscribe');
+	.option('-c, --config <path>', 'Set config path. Defaults to ~/.onscribe')
+	.option('-r, --reset', 'Reset token saved');
 
 /* Setup */
 program
