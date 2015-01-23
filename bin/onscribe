@@ -44,8 +44,8 @@ program
 program
 	.command('product [id]')
 	.description('Read product details')
-	.option("-a, --all", "List all products for user")
-	.option("-i, --item <number>", "Output a single item by its id")
+	.option("-l, --list", "List all products for user")
+	//.option("-i, --item <number>", "Output a single item by its id")
 	.option("-k, --keys <list>", "Return only certain fields")
 	.option("-n, --number <number>", "Limit number of items returned")
 	.action(function(id, options){
@@ -58,7 +58,7 @@ program
 		console.log('  Examples:');
 		console.log();
 		console.log('    $ onscribe product {{id}}');
-		console.log('    $ onscribe product --all');
+		console.log('    $ onscribe product --list');
 		console.log();
 	});
 
@@ -66,8 +66,8 @@ program
 program
 	.command('provider [id]')
 	.description('Read provider info, optionally from product')
-	.option("-a, --all", "Read all subscribers")
-	.option("-i, --item <number>", "Output a single item by its id")
+	.option("-l, --list", "List all products for user")
+	//.option("-i, --item <number>", "Output a single item by its id")
 	.option("-k, --keys <list>", "Return only certain fields")
 	.option("-n, --number <number>", "Limit number of items returned")
 	.option("-q, --query <string>", "Output items based on conditions")
@@ -82,7 +82,7 @@ program
 		console.log('  Examples:');
 		console.log();
 		console.log('    $ onscribe user -i {{id}}');
-		console.log('    $ onscribe user {{user}} --all');
+		console.log('    $ onscribe user {{user}} --list');
 		console.log();
 	});
 
@@ -90,8 +90,8 @@ program
 program
 	.command('subscription [id]')
 	.description('Read subscriber info, optionally from product')
-	.option("-a, --all", "Read all subscribers")
-	.option("-i, --item <number>", "Output a single item by its id")
+	.option("-l, --list", "List all products for user")
+	//.option("-i, --item <number>", "Output a single item by its id")
 	.option("-k, --keys <list>", "Return only certain fields")
 	.option("-n, --number <number>", "Limit number of items returned")
 	.option("-q, --query <string>", "Output items based on conditions")
@@ -106,7 +106,7 @@ program
 		console.log('  Examples:');
 		console.log();
 		console.log('    $ onscribe subscription -i {{id}}');
-		console.log('    $ onscribe subscription {{user}} --all');
+		console.log('    $ onscribe subscription {{user}} --list');
 		console.log();
 	});
 
