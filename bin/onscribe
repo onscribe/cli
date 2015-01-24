@@ -45,9 +45,10 @@ program
 	.command('product [id]')
 	.description('Read product details')
 	.option("-l, --list", "List all products for user")
-	//.option("-i, --item <number>", "Output a single item by its id")
+	.option("-p, --providers", "Return the active providers for this product")
+	.option("-s, --subscriptions", "Return the active subscriptions for this product")
 	.option("-k, --keys <list>", "Return only certain fields")
-	.option("-n, --number <number>", "Limit number of items returned")
+	//.option("-n, --number <number>", "Limit number of items returned")
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
