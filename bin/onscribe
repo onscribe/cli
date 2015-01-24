@@ -33,6 +33,8 @@ program
 program
 	.command('user [id]')
 	.description('Read user info')
+	.option("-p, --products", "Return the active products for this user")
+	.option("-s, --subscriptions", "Return the active subscriptions for this user")
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
@@ -68,11 +70,10 @@ program
 	.command('provider [id]')
 	.description('Read provider info, optionally from product')
 	.option("-l, --list", "List all products for user")
-	//.option("-i, --item <number>", "Output a single item by its id")
 	.option("-k, --keys <list>", "Return only certain fields")
-	.option("-n, --number <number>", "Limit number of items returned")
-	.option("-q, --query <string>", "Output items based on conditions")
-	.option("-o, --order <field>", "Define the order of output based on a field")
+	//.option("-n, --number <number>", "Limit number of items returned")
+	//.option("-q, --query <string>", "Output items based on conditions")
+	//.option("-o, --order <field>", "Define the order of output based on a field")
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
@@ -92,11 +93,10 @@ program
 	.command('subscription [id]')
 	.description('Read subscriber info, optionally from product')
 	.option("-l, --list", "List all products for user")
-	//.option("-i, --item <number>", "Output a single item by its id")
 	.option("-k, --keys <list>", "Return only certain fields")
-	.option("-n, --number <number>", "Limit number of items returned")
-	.option("-q, --query <string>", "Output items based on conditions")
-	.option("-o, --order <field>", "Define the order of output based on a field")
+	//.option("-n, --number <number>", "Limit number of items returned")
+	//.option("-q, --query <string>", "Output items based on conditions")
+	//.option("-o, --order <field>", "Define the order of output based on a field")
 	.action(function(id, options){
 		id = id || false;
 		process.nextTick(function(){
